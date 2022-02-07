@@ -7,8 +7,8 @@
 }
 
 export interface PagingFilter {
-  skip: number,
-  limit: number,
+  skip?: number,
+  limit?: number,
 }
 
 export interface SecuritiesFilter extends PagingFilter {
