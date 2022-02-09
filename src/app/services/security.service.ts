@@ -1,21 +1,18 @@
 import { Injectable } from '@angular/core';
-import {delay, from, Observable, of, skip, take} from "rxjs";
+import { delay, Observable, of } from "rxjs";
 import { Security } from "../models/security";
 import { SECURITIES } from "../mocks/securities-mock";
-import { SecuritiesFilter } from "../models/security";
+import { SecuritiesFilter } from "../models/securitiesFilter";
 
 @Injectable({
   providedIn: 'root'
 })
 export class SecurityService {
-  private readonly _securities: Security[];
 
-  constructor() {
-    this._securities = SECURITIES;
-  }
+  constructor() { }
 
   /**
-   * Get Securities server request mock:
+   * Get Securities server request mock
    * */
   getSecurities(securityFilter?: SecuritiesFilter): Observable<Security[]> {
     const filteredSecurities = this.filterSecurities(securityFilter)
@@ -25,9 +22,9 @@ export class SecurityService {
   }
 
   private filterSecurities(securityFilter: SecuritiesFilter) {
-    if (!securityFilter) return this._securities;
+    if (!securityFilter) return SECURITIES;
 
-    return this._securities.filter(s =>
+    return SECURITIES.filter(s =>
       (!securityFilter.name || s.name.includes(securityFilter.name))
       && (!securityFilter.types || securityFilter.types.some(type => s.type === type))
       && (!securityFilter.currencies || securityFilter.currencies.some(currency => s.currency == currency))

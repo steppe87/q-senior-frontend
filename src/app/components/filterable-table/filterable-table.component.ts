@@ -6,11 +6,10 @@ import {
   Input,
   QueryList,
   ViewChild,
-  ViewEncapsulation
 } from '@angular/core';
-import {DataSource} from "@angular/cdk/collections";
-import {MatColumnDef, MatHeaderRowDef, MatNoDataRow, MatRowDef, MatTable} from "@angular/material/table";
-import {Observable} from "rxjs";
+import { DataSource } from "@angular/cdk/collections";
+import { MatColumnDef, MatHeaderRowDef, MatNoDataRow, MatRowDef, MatTable } from "@angular/material/table";
+import { Observable } from "rxjs";
 
 @Component({
   selector: 'filterable-table',
