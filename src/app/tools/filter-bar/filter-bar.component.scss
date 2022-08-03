@@ -1,0 +1,29 @@
+﻿
+.filter-form-wrapper {
+  display: flex;
+  flex-direction: row;
+
+  &.small-view {
+    max-height: 105px;
+    overflow-y: hidden;
+  }
+
+  .filter-form-element {
+    display: flex;
+    flex-direction: column;
+    padding: 0 20px;
+    min-width: 200px;
+
+    .headline {
+      padding: 20px 0 7px 0;
+    }
+
+    button {
+      margin-top: 13px;
+    }
+  }
+}
+
+.spacer {
+  flex: 1 1 auto;
+}

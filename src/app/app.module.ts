@@ -8,6 +8,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from "@angular/material/table";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { SecuritiesListComponent } from './components/securities-list/securities-list.component';
+import { FilterBarModule } from './tools/filter-bar/filter-bar.module';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { SecuritiesListComponent } from './components/securities-list/securities
     NoopAnimationsModule,
     MatTableModule,
     MatProgressSpinnerModule,
+    FilterBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

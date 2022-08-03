@@ -1,0 +1,50 @@
+﻿<form [formGroup]="form" *ngIf="form">
+  <div class="filter-form-wrapper" [class.small-view]="!more">
+    <div class="filter-form-element" *ngFor="let item of filterFormData.filterFormFields | keyvalue:keepOriginalOrder">
+
+      <!-- INPUT -->
+      <ng-container *ngIf="(item.value.type === 'input') && item.value as inputForm">
+        <mat-form-field>
+          <mat-label *ngIf="inputForm.label">{{inputForm.label}}</mat-label>
+          <input matInput type="text" [formControlName]="item.key" />
+        </mat-form-field>
+      </ng-container>
+
+      <!-- MULTI-SELECT -->
+      <ng-container *ngIf="(item.value.type === 'multiselect') && item.value as multiSelectData">
+        <section [formGroupName]="item.key">
+          <div class="headline" *ngIf="multiSelectData.label">{{multiSelectData.label}}:</div>
+          <div *ngFor="let option of multiSelectData.options">
+            <mat-checkbox [formControlName]="option">{{option}}</mat-checkbox>
+          </div>
+        </section>
+      </ng-container>
+
+      <!-- CHECKBOX -->
+      <ng-container *ngIf="(item.value.type === 'checkbox') && item.value as checkboxData">
+        <mat-checkbox class="headline" [formControlName]="item.key">{{checkboxData.label}}</mat-checkbox>
+      </ng-container>
+
+      <!-- SELECT (extending example)-->
+      <ng-container *ngIf="(item.value.type === 'select') && item.value as selectData">
+        <mat-form-field>
+          <mat-label *ngIf="selectData.label">{{selectData.label}}</mat-label>
+          <mat-select placeholder="-" disableOptionCentering [formControlName]="item.key">
+            <!--empty option-->
+            <mat-option [value]="''">-</mat-option>
+            <!--all options-->
+            <mat-option *ngFor="let option of selectData.options" [value]="option">
+              {{ option }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </ng-container>
+
+    </div>
+    <div class="filter-form-element">
+      <button mat-raised-button color="accent" (click)="resetFilter()">Reset filter</button>
+      <div class="spacer"></div>
+      <button mat-button color="accent" (click)="more = !more">{{ more ? 'less' : 'more' }}</button>
+    </div>
+  </div>
+</form>
